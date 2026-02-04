@@ -1,0 +1,37 @@
+# Hivemind Swarm Configuration
+# No blockchain - pure p2p
+
+# Bootstrap peer settings
+bootstrap:
+  # Your VPS public IP (update this!)
+  host: "YOUR_VPS_PUBLIC_IP"
+  port: 38751
+  identity_path: "./keys/bootstrap.pem"
+
+# Network settings
+network:
+  # Add your bootstrap peer address here after starting it
+  # Format: /ip4/<IP>/tcp/<PORT>/p2p/<PEER_ID>
+  initial_peers: []
+  
+  # Connection settings
+  wait_timeout: 60
+  dht_prefix: "robustness"
+  expiration_time: 3600
+
+# Execution settings
+execution:
+  # Number of local workers
+  max_workers: 4
+  
+  # Default evaluation settings
+  default_n_worlds: 100
+  default_max_steps: 50
+  
+  # Timeout for results
+  result_timeout: 300
+
+# Logging
+logging:
+  level: INFO
+  file: "./logs/swarm.log"

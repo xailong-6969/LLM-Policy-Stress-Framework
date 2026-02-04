@@ -1,0 +1,23 @@
+services:
+  # Bootstrap peer - run on VPS
+  bootstrap:
+    build:
+      context: ../..
+      dockerfile: docker/bootstrap/Dockerfile
+    ports:
+      - "38751:38751"
+    volumes:
+      - ./keys:/app/keys
+    restart: unless-stopped
+    
+  # Worker node - run on any machine
+  worker:
+    build:
+      context: ../..
+      dockerfile: docker/worker/Dockerfile
+    environment:
+      - BOOTSTRAP_PEER=${BOOTSTRAP_PEER}
+    volumes:
+      - ./keys:/app/keys
+    depends_on:
+      - bootstrap
