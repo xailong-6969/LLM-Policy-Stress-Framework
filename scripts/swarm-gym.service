@@ -1,0 +1,15 @@
+[Unit]
+Description=SwarmGym - Distributed AI Policy Evaluation
+After=network.target
+
+[Service]
+Type=simple
+User=YOUR_USERNAME
+WorkingDirectory=/home/YOUR_USERNAME/robustness-network/LLM-Policy-Stress-Framework
+ExecStart=/home/YOUR_USERNAME/robustness-network/LLM-Policy-Stress-Framework/.venv/bin/python /home/YOUR_USERNAME/robustness-network/LLM-Policy-Stress-Framework/scripts/run_node.py
+Restart=always
+RestartSec=10
+Environment="PATH=/home/YOUR_USERNAME/robustness-network/LLM-Policy-Stress-Framework/.venv/bin"
+
+[Install]
+WantedBy=multi-user.target
